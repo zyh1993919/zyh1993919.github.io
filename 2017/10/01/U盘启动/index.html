@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        制作U盘启动 · 依然灬灰
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170925" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >依然灬灰</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">制作U盘启动</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>依然灬灰</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/post-bg.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            制作U盘启动
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = U盘启动>U盘启动</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/10/01</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>作为一个天天和电脑打交道的人一定会遇到电脑异常卡顿或者是蓝屏无法启动的状况，这个是时候你就得会重装系统，而不送修（注意个人隐私的东西，小心冠希哥哦）,所以今天分享的是制作U盘启动项。</p>
+<h1 id="制作U盘启动"><a href="#制作U盘启动" class="headerlink" title="制作U盘启动"></a>制作U盘启动</h1><p>本人比较low，使用的是<a href="http://www.laomaotao.net/" target="_blank" rel="external">老毛桃U盘装系统</a>，其他软件大家类比安装。<br><img src="/images/boot_from_u_disk/LaomaotaoIndex.png" alt="老毛桃首页" title="老毛桃首页"><br>这是老毛桃首页,现在百度排名比较高的那个不是我用的这个老毛桃。</p>
+<ul>
+<li><strong>下载地址</strong> ：<a href="http://www.laomaotao.net/down/" target="_blank" rel="external">老毛桃U盘装系统</a>；<br><img src="/images/下载页.png" alt="老毛桃下载页" title="老毛桃下载页"><br><img src="/images/下载详情页.png" alt="老毛桃下载详情页" title="老毛桃下载详情页"></li>
+<li><strong>安装软件</strong> ：双击打开下载好的安装软件<br><img src="/images/安装流程1.png" alt="安装流程1" title="安装流程1"><br><img src="/images/安装流程2.png" alt="安装流程2" title="安装流程2"></li>
+<li><p><strong>使用软件</strong> ：这部分我会贴图并且详细的讲解一下<br>最基础使用根据图片的红框勾选就可以啦。<br><img src="/images/U启选项.png" alt="U启选项" title="U启选项"><br>安装完成后建议点击模拟启动测试一下<br><img src="/images/模拟启动选项.png" alt="模拟启动选项" title="模拟启动选项"><br>出现下图页面就说明你成功啦!<br><img src="/images/模拟启动成功.png" alt="模拟启动成功" title="模拟启动成功"></p>
+</li>
+<li><p><strong>进阶教程</strong> ：上面的是基础,现在说一下去除老毛桃安装完新系统后还会安装一下第三方插件。<br><img src="/images/进阶设置.png" alt="进阶设置" title="进阶设置"><br><img src="/images/进阶教程1.png" alt="进阶教程1" title="进阶教程1"><br><img src="/images/进阶教程2.png" alt="进阶教程2" title="进阶教程2"><br><img src="/images/进阶教程3.png" alt="进阶教程3" title="进阶教程3"><br><img src="/images/进阶教程4.png" alt="进阶教程4" title="进阶教程4"><br><a href="http://www.huangguofeng.com/u/" target="_blank" rel="external">网址</a><br><a href="http://ali.huangguofeng.com/u/" target="_blank" rel="external">网址</a><br><img src="/images/进阶教程5.png" alt="进阶教程5" title="进阶教程5"><br>这时候再重新制作一下U盘启动就不会给你的电脑安装第三方软件啦!</p>
+</li>
+</ul>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/10/07/安装完CentOS7安全配置/" title= 安装完CentOS 7 安全配置 >
+                    <span>Next Post</span>
+                    <span>安装完CentOS 7 安全配置</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/09/30/hello-world/" title= Hello World 是程序猿探索世界的第一步 >
+                    <span>Previous Post</span>
+                    <span>Hello World 是程序猿探索世界的第一步</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTI0Ni83Nzk1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="emailto:zyh1993919@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/zyh1993919" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+        </span>
+        <span class="iconfont-archer power">&#xe635;</span>
+        <span id="theme-info">
+        Theme 
+        <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a>
+        </span>
+    </div>
+    <div class="copyright">
+        <a href="http://hexo.zhangyihui.top" target="_blank">京ICP备17055290号-1</a>
+        </span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+        <span id="busuanzi_container_site_pv">Welcome, No. <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 6 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2017/10/12/CentOS7安装GIT/" >CentOS 7.3 安装GIT</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2017/10/09/CentOS7安装SVN/" >CentOS 7.3 安装SVN</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2017/10/08/CentOS7安装Nginx+PHP+MariaDB/" >CentOS 7.3 安装Nginx+PHP+MariaDB</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/安装完CentOS7安全配置/" >安装完CentOS 7 安全配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/01</span><a class="archive-post-title" href= "/2017/10/01/U盘启动/" >制作U盘启动</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2017/09/30/hello-world/" >Hello World 是程序猿探索世界的第一步</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">CentOS7</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">U盘启动</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Hello World</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+

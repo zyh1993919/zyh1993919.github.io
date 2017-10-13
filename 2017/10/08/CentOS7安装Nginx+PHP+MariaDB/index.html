@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        CentOS 7.3 安装Nginx+PHP+MariaDB · 依然灬灰
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170925" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >依然灬灰</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">CentOS 7.3 安装Nginx+PHP+MariaDB</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>依然灬灰</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/post-bg.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            CentOS 7.3 安装Nginx+PHP+MariaDB
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = CentOS7>CentOS7</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/10/08</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="CentOS-7-3-安装Nginx-PHP-MariaDB"><a href="#CentOS-7-3-安装Nginx-PHP-MariaDB" class="headerlink" title="CentOS 7.3 安装Nginx+PHP+MariaDB"></a>CentOS 7.3 安装Nginx+PHP+MariaDB</h1><h3 id="查看CentOS版本"><a href="#查看CentOS版本" class="headerlink" title="查看CentOS版本"></a>查看CentOS版本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/centos-release</div></pre></td></tr></table></figure>
+<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><h3 id="添加官方YUM源"><a href="#添加官方YUM源" class="headerlink" title="添加官方YUM源"></a>添加官方YUM源</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/nginx.repo</div></pre></td></tr></table></figure>
+<p>添加以下信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/7/<span class="variable">$basearch</span>/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
+<h3 id="YUM安装Nginx"><a href="#YUM安装Nginx" class="headerlink" title="YUM安装Nginx"></a>YUM安装Nginx</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install nginx</div></pre></td></tr></table></figure>
+<h3 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start nginx.service</div></pre></td></tr></table></figure>
+<p>在浏览器地址栏输入你服务器的IP地址,例如我的服务器IP:47.94.0.108，会看到nginx欢迎界面，说明nginx安装成功</p>
+<h3 id="设置Nginx开机自启动"><a href="#设置Nginx开机自启动" class="headerlink" title="设置Nginx开机自启动"></a>设置Nginx开机自启动</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">enable</span> nginx.service</div></pre></td></tr></table></figure>
+<h2 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h2><h3 id="添加webtatic（第三方）yum源"><a href="#添加webtatic（第三方）yum源" class="headerlink" title="添加webtatic（第三方）yum源"></a>添加webtatic（第三方）yum源</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</div><div class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</div></pre></td></tr></table></figure>
+<h3 id="YUM安装PHP7-1"><a href="#YUM安装PHP7-1" class="headerlink" title="YUM安装PHP7.1"></a>YUM安装PHP7.1</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install php71w-fpm</div></pre></td></tr></table></figure>
+<h3 id="配置nginx支持php"><a href="#配置nginx支持php" class="headerlink" title="配置nginx支持php"></a>配置nginx支持php</h3><p>修改默认虚拟主机配置文件,需做如下修改<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/nginx/conf.d/default.conf</div></pre></td></tr></table></figure></p>
+<p>取消FastCGI server部分location的注释，注意fastcgi_param行的参数，改为项目绝对路径<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></div><div class="line"><span class="comment">#</span></div><div class="line">location ~ \.php$ &#123;</div><div class="line">  root html;</div><div class="line">  fastcgi_pass 127.0.0.1:9000;</div><div class="line">  fastcgi_index index.php;</div><div class="line">  fastcgi_param SCRIPT_FILENAME /usr/share/nginx/html/<span class="variable">$fastcgi_script_name</span>;</div><div class="line">  include fastcgi_params;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>重启nginx，启动php-fpm<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl restart nginx.service</div><div class="line">systemctl start php-fpm.service</div></pre></td></tr></table></figure></p>
+<p>新建index.php测试文件,调用phpinfo函数<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /usr/share/nginx/html/index.php</div></pre></td></tr></table></figure></p>
+<p>在index.php文件写入以下代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">  phpinfo();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在浏览器中打开47.94.0.108/index.php，就会看到phpinfo页面</p>
+<h2 id="安装MariaDB"><a href="#安装MariaDB" class="headerlink" title="安装MariaDB"></a>安装MariaDB</h2><h3 id="YUM安装MariaDB"><a href="#YUM安装MariaDB" class="headerlink" title="YUM安装MariaDB"></a>YUM安装MariaDB</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install mariadb mariadb-server</div></pre></td></tr></table></figure>
+<h3 id="设置MariaDB开机自启动"><a href="#设置MariaDB开机自启动" class="headerlink" title="设置MariaDB开机自启动"></a>设置MariaDB开机自启动</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">enable</span> mariadb.service</div></pre></td></tr></table></figure>
+<h3 id="启动MariaDB"><a href="#启动MariaDB" class="headerlink" title="启动MariaDB"></a>启动MariaDB</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start mariadb.service</div></pre></td></tr></table></figure>
+<h3 id="查看MariaDB运行状态"><a href="#查看MariaDB运行状态" class="headerlink" title="查看MariaDB运行状态"></a>查看MariaDB运行状态</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl status mariadb.service</div></pre></td></tr></table></figure>
+<h3 id="登陆mariadb设置登陆root用户的密码"><a href="#登陆mariadb设置登陆root用户的密码" class="headerlink" title="登陆mariadb设置登陆root用户的密码"></a>登陆mariadb设置登陆root用户的密码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql</div></pre></td></tr></table></figure>
+<p>进入到mysql依次输入<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">use mysql</div><div class="line">update user <span class="built_in">set</span> password=PASSWORD(<span class="string">'请在此处填写你所设置的密码'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</div></pre></td></tr></table></figure></p>
+<p>修改完以后要刷新权限使其生效<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush privileges</div></pre></td></tr></table></figure></p>
+<h3 id="测试登录数据库"><a href="#测试登录数据库" class="headerlink" title="测试登录数据库"></a>测试登录数据库</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
+<p>回车输入密码</p>
+<p>本文参考<br><a href="http://www.jianshu.com/p/7c6930c62e54" target="_blank" rel="external">CentOS 7.3.1611 yum安装MySQL5.7+Nginx1.12+PHP7.1</a><br><a href="http://blog.csdn.net/jssg_tzw/article/details/53418316" target="_blank" rel="external">CentOS7 Minimal安装MariaDB</a></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/10/09/CentOS7安装SVN/" title= CentOS 7.3 安装SVN >
+                    <span>Next Post</span>
+                    <span>CentOS 7.3 安装SVN</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/10/07/安装完CentOS7安全配置/" title= 安装完CentOS 7 安全配置 >
+                    <span>Previous Post</span>
+                    <span>安装完CentOS 7 安全配置</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTI0Ni83Nzk1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="emailto:zyh1993919@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/zyh1993919" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+        </span>
+        <span class="iconfont-archer power">&#xe635;</span>
+        <span id="theme-info">
+        Theme 
+        <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a>
+        </span>
+    </div>
+    <div class="copyright">
+        <a href="http://hexo.zhangyihui.top" target="_blank">京ICP备17055290号-1</a>
+        </span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+        <span id="busuanzi_container_site_pv">Welcome, No. <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 6 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2017/10/12/CentOS7安装GIT/" >CentOS 7.3 安装GIT</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2017/10/09/CentOS7安装SVN/" >CentOS 7.3 安装SVN</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2017/10/08/CentOS7安装Nginx+PHP+MariaDB/" >CentOS 7.3 安装Nginx+PHP+MariaDB</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/安装完CentOS7安全配置/" >安装完CentOS 7 安全配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/01</span><a class="archive-post-title" href= "/2017/10/01/U盘启动/" >制作U盘启动</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2017/09/30/hello-world/" >Hello World 是程序猿探索世界的第一步</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">CentOS7</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">U盘启动</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Hello World</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+

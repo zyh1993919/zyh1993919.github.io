@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        CentOS 7.3 安装SVN · 依然灬灰
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170925" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >依然灬灰</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">CentOS 7.3 安装SVN</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>依然灬灰</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/post-bg.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            CentOS 7.3 安装SVN
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = CentOS7>CentOS7</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/10/09</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="CentOS-7-3-安装SVN"><a href="#CentOS-7-3-安装SVN" class="headerlink" title="CentOS 7.3 安装SVN"></a>CentOS 7.3 安装SVN</h1><h2 id="安装SVN"><a href="#安装SVN" class="headerlink" title="安装SVN"></a>安装SVN</h2><h3 id="YUM安装SVN"><a href="#YUM安装SVN" class="headerlink" title="YUM安装SVN"></a>YUM安装SVN</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install subversion</div></pre></td></tr></table></figure>
+<h3 id="测试安装是否成功"><a href="#测试安装是否成功" class="headerlink" title="测试安装是否成功"></a>测试安装是否成功</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svnserve --version</div></pre></td></tr></table></figure>
+<p>出现以下信息安装成功<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]# svnserve --version</div><div class="line">svnserve, version 1.7.14 (r1542130)</div><div class="line">   compiled Aug 23 2017, 20:43:38</div><div class="line"></div><div class="line">Copyright (C) 2013 The Apache Software Foundation.</div><div class="line">This software consists of contributions made by many people; see the NOTICE</div><div class="line">file for more information.</div><div class="line">Subversion is open source software, see http://subversion.apache.org/</div><div class="line"></div><div class="line">The following repository back-end (FS) modules are available:</div><div class="line"></div><div class="line">* fs_base : Module for working with a Berkeley DB repository.</div><div class="line">* fs_fs : Module for working with a plain file (FSFS) repository.</div><div class="line"></div><div class="line">Cyrus SASL authentication is available.</div></pre></td></tr></table></figure></p>
+<h3 id="代码库创建"><a href="#代码库创建" class="headerlink" title="代码库创建"></a>代码库创建</h3><p>创建存放数据文件夹<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost modules]# mkdir -p /opt/svn/repo</div></pre></td></tr></table></figure></p>
+<p>初始化测试库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost modules]# svnadmin create /opt/svn/repo</div></pre></td></tr></table></figure></p>
+<p>执行上面的命令后，自动建立repo测试库，查看/opt/svn/repo 文件夹发现包含了conf, db,format,hooks, locks, README.txt等文件，说明一个SVN库已经建立。</p>
+<h3 id="配置代码库"><a href="#配置代码库" class="headerlink" title="配置代码库"></a>配置代码库</h3><p>进入上面生成的文件夹conf下，进行配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost modules]# cd /opt/svn/repo/conf</div></pre></td></tr></table></figure></p>
+<p>用户密码passwd配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@admin conf]# vim passwd</div></pre></td></tr></table></figure></p>
+<p>修改passwd以下内容<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[users]</div><div class="line"><span class="meta">#</span><span class="bash"> harry = harryssecret</span></div><div class="line"><span class="meta">#</span><span class="bash"> sally = sallyssecret</span></div><div class="line">hello=123</div><div class="line"></div><div class="line">用户名=密码</div><div class="line"></div><div class="line">这样我们就建立了hello用户， 123密码</div><div class="line"></div><div class="line">**以上语句都必须顶格写, 左侧不能留空格, 否则会出错.**</div></pre></td></tr></table></figure></p>
+<p>权限控制authz配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@admin conf]# vim  authz</div></pre></td></tr></table></figure></p>
+<p>目的是设置哪些用户可以访问哪些目录，向authz文件追加以下内容：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">设置[/]代表根目录下所有的资源 </span></div><div class="line"></div><div class="line">[/]   或者写成[repl:/]</div><div class="line">hello = rw</div><div class="line"></div><div class="line">意思是hello用户对repo测试库下所有的目录有读写权限，当然也可以限定。</div><div class="line">如果是自己用，就直接是读写吧。</div><div class="line"></div><div class="line">**以上语句都必须顶格写, 左侧不能留空格, 否则会出错.**</div></pre></td></tr></table></figure></p>
+<h3 id="服务svnserve-conf配置"><a href="#服务svnserve-conf配置" class="headerlink" title="服务svnserve.conf配置"></a>服务svnserve.conf配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@admin conf]# vim svnserve.conf</div></pre></td></tr></table></figure>
+<p>追加以下内容：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[general]</div><div class="line"><span class="meta">#</span><span class="bash">匿名访问的权限，可以是<span class="built_in">read</span>,write,none,默认为<span class="built_in">read</span></span></div><div class="line">anon-access=none</div><div class="line"><span class="meta">#</span><span class="bash">使授权用户有写权限 </span></div><div class="line">auth-access=write</div><div class="line"><span class="meta">#</span><span class="bash">密码数据库的路径 </span></div><div class="line">password-db=passwd</div><div class="line"><span class="meta">#</span><span class="bash">访问控制文件 </span></div><div class="line">authz-db=authz</div><div class="line"><span class="meta">#</span><span class="bash">认证命名空间，subversion会在认证提示里显示，并且作为凭证缓存的关键字 </span></div><div class="line">realm=/opt/svn/repositories</div><div class="line"></div><div class="line">**以上语句都必须顶格写, 左侧不能留空格, 否则会出错.**</div></pre></td></tr></table></figure></p>
+<h3 id="启动SVN"><a href="#启动SVN" class="headerlink" title="启动SVN"></a>启动SVN</h3><p>默认端口号启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost conf]# svnserve -d -r /opt/svn/repo</div></pre></td></tr></table></figure></p>
+<p>设置自己需要的端口号<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost conf]# svnserve -d -r /opt/svn/repo --listen-port 3391</div></pre></td></tr></table></figure></p>
+<h3 id="查看SVN是否启动"><a href="#查看SVN是否启动" class="headerlink" title="查看SVN是否启动"></a>查看SVN是否启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost conf]# ps -aux |gerp svn</div><div class="line">root     11413  0.0  0.0 162184   740 ?        Ss   Sep28   0:00 svnserve -d -r /opt/svn/repo</div></pre></td></tr></table></figure>
+<h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><p>本文参考<br><a href="http://blog.csdn.net/u012862899/article/details/50164905" target="_blank" rel="external">CentOS 7.0 SVN搭建 (YUM安装)</a></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/10/12/CentOS7安装GIT/" title= CentOS 7.3 安装GIT >
+                    <span>Next Post</span>
+                    <span>CentOS 7.3 安装GIT</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/10/08/CentOS7安装Nginx+PHP+MariaDB/" title= CentOS 7.3 安装Nginx+PHP+MariaDB >
+                    <span>Previous Post</span>
+                    <span>CentOS 7.3 安装Nginx+PHP+MariaDB</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTI0Ni83Nzk1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="emailto:zyh1993919@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/zyh1993919" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+        </span>
+        <span class="iconfont-archer power">&#xe635;</span>
+        <span id="theme-info">
+        Theme 
+        <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a>
+        </span>
+    </div>
+    <div class="copyright">
+        <a href="http://hexo.zhangyihui.top" target="_blank">京ICP备17055290号-1</a>
+        </span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+        <span id="busuanzi_container_site_pv">Welcome, No. <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 6 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2017/10/12/CentOS7安装GIT/" >CentOS 7.3 安装GIT</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2017/10/09/CentOS7安装SVN/" >CentOS 7.3 安装SVN</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/08</span><a class="archive-post-title" href= "/2017/10/08/CentOS7安装Nginx+PHP+MariaDB/" >CentOS 7.3 安装Nginx+PHP+MariaDB</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/安装完CentOS7安全配置/" >安装完CentOS 7 安全配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/01</span><a class="archive-post-title" href= "/2017/10/01/U盘启动/" >制作U盘启动</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2017/09/30/hello-world/" >Hello World 是程序猿探索世界的第一步</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">CentOS7</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">U盘启动</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Hello World</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
