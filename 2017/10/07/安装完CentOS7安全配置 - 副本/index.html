@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        依然灬灰
+        安装完CentOS 7 安全配置 · 依然灬灰
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >依然灬灰</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">安装完CentOS 7 安全配置</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>依然灬灰</a>
 </header>
@@ -80,56 +91,123 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            安装完CentOS 7 安全配置
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = CentOS7>CentOS7</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/10/07</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="云服务器安装CentOS7-3后常用配置"><a href="#云服务器安装CentOS7-3后常用配置" class="headerlink" title="云服务器安装CentOS7.3后常用配置"></a>云服务器安装CentOS7.3后常用配置</h1><h3 id="查看CentOS版本"><a href="#查看CentOS版本" class="headerlink" title="查看CentOS版本"></a>查看CentOS版本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/centos-release</div></pre></td></tr></table></figure>
+<h2 id="安装完CentOS-7-后必做的七件事"><a href="#安装完CentOS-7-后必做的七件事" class="headerlink" title="安装完CentOS 7 后必做的七件事"></a><a href="http://www.centoscn.com/CentosSecurity/CentosSafe/2015/0126/4558.html" target="_blank" rel="external">安装完CentOS 7 后必做的七件事</a></h2><h3 id="更改-root-密码"><a href="#更改-root-密码" class="headerlink" title="更改 root 密码"></a>更改 root 密码</h3><p>登录云服务器,如果不是以root用户登录的，请先切换到root用户下，<br>执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">su root			<span class="comment">##然后按提示输入root用户的密码</span></div><div class="line">passwd			<span class="comment">##接着输入新的密码</span></div></pre></td></tr></table></figure></p>
+<h3 id="新增一个普通帐号"><a href="#新增一个普通帐号" class="headerlink" title="新增一个普通帐号"></a>新增一个普通帐号</h3><pre><code class="bash">adduser commuser
+passwd commuser
+</code></pre>
+<h3 id="禁止-root-用户使用-ssh-登入"><a href="#禁止-root-用户使用-ssh-登入" class="headerlink" title="禁止 root 用户使用 ssh 登入"></a>禁止 root 用户使用 ssh 登入</h3><pre><code class="bash">vim /etc/ssh/sshd_config
+</code></pre>
+<p>在#PermitRootLogin yes的下面<br>添加PermitRootLogin no  </p>
+<p>重启sshd服务</p>
+<pre><code class="bash">systemctl restart sshd.service
+</code></pre>
+<h3 id="使用非常规的-ssh-端口"><a href="#使用非常规的-ssh-端口" class="headerlink" title="使用非常规的 ssh 端口"></a>使用非常规的 ssh 端口</h3><pre><code class="bash">vim /etc/ssh/sshd_config
+</code></pre>
+<p>在#Port 22的下面<br>添加Port XXX<br>你可以把 XXX 改为任何 1024 – 65535 之间的任何数字，若害怕与某些系统服务发生冲突，可以写10837这里。(这部分是源自上面的连接)<br>我建议端口号可以使用小于1024的端口号,这样在别人扫描端口的时候,其实扫出来的服务和你现在使用的服务不一样也能加强安全。  </p>
+<p>重启sshd服务</p>
+<pre><code class="bash">systemctl restart sshd.service
+</code></pre>
+<h3 id="启用公钥验证登入-ssh"><a href="#启用公钥验证登入-ssh" class="headerlink" title="启用公钥验证登入 ssh"></a>启用公钥验证登入 ssh</h3><p>(未实验,带实验后添加)</p>
+<h3 id="启用防火墙"><a href="#启用防火墙" class="headerlink" title="启用防火墙"></a>启用防火墙</h3><pre><code class="bash">firewall-cmd --state            <span class="comment">##查看防火墙状态，是否是running</span>
+systemctl <span class="built_in">enable</span> firewalld      <span class="comment">##设置开启启动防火墙</span>
+systemctl start firewalld       <span class="comment">##启动防火墙</span>
+systemctl restart firewalld     <span class="comment">##重启防火墙</span>
+systemctl stop firewalld        <span class="comment">##停止防火墙</span>
+firewall-cmd --reload           <span class="comment">##重新载入配置，比如添加规则之后，需要执行此命令</span>
+firewall-cmd --zone=public --add-port=80/tcp --permanent        <span class="comment">##添加80端口到放行列表</span>
+firewall-cmd --zone=public --query-port=80/tcp                    <span class="comment">##查看80端口是否放行</span>
+firewall-cmd --zone= public --remove-port=80/tcp --permanent    <span class="comment">##删除80端口从放行列表</span>
+firewall-cmd --list-all            <span class="comment">##查看所有放行信息</span>
+</code></pre>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/10/08/CentOS7安装Nginx+PHP+MariaDB/" title= CentOS 7.3 安装Nginx+PHP+MariaDB >
+                    <span>Next Post</span>
+                    <span>CentOS 7.3 安装Nginx+PHP+MariaDB</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/10/07/安装完CentOS7安全配置/" title= 安装完CentOS 7 安全配置 >
+                    <span>Previous Post</span>
+                    <span>安装完CentOS 7 安全配置</span>
+                </a>
+            </li>
+        
+    </ul>
+
+
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTI0Ni83Nzk1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
     
     
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/01/29/win查看电池状态/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>Win查看电池</span>
-                    </h2>
-                <div class="abstract-content">
-                    笔记本电池经过一段时间的使用会有损耗，这时候我们就需要查看一下电池的损耗程度，是否需要更换新的电池。我这里介绍一下如何不使用其他软件，而是使用windows自带的软件查看当前电池的状态。
-Win查看电池状态打开命令行窗口win+r输入cmd切换到桌面文件夹输入powercfg /battery...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = Win>Win</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/01/29</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
+    <!--PC版-->
+
     
 </main>
             <!-- profile -->
