@@ -166,15 +166,19 @@ LOG_PATH=/data/svn/hexo/post_log.log
 <span class="built_in">cd</span> /data/www/html/hexo/
 <span class="comment">#打印当前时间信息到log文件中</span>
 date <span class="string">"+%Y-%m-%d %H:%M:%S"</span> &gt;&gt; LOG_PATH
-<span class="comment">#</span>
+<span class="comment">#清理文件</span>
 HEXO_PATH clean WEB_PATH &gt;&gt; LOG_PATH
+<span class="comment">#生成静态文件</span>
 HEXO_PATH generate WEB_PATH &gt;&gt; LOG_PATH
+<span class="comment">#发布(这部分需要将服务器的公钥上传到github上,不然权限验证过不了)</span>
 HEXO_PATH deploy WEB_PATH &gt;&gt; LOG_PATH
 </code></pre>
 <p>SVN更新的账号密码测试的时候可以使用你自己的账号，以后再升级成专用更新的用户账号密码</p>
 <p>文件修改好后使用<br>给权限</p>
 <pre><code class="sh">chmod 700 ./hooks/post-commit
 </code></pre>
+<p>#<br>写钩子的时候请记住一件事情写log，这个很有用的。</p>
+<p>大体的写了一下，以后再补图。</p>
 
     </article>
     <!-- 前后页  -->
