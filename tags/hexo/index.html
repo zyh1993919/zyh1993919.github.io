@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        SVN服务器实现链接更新web目录 · 依然灬灰
+        依然灬灰
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,22 +68,11 @@
     
 </head>
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >依然灬灰</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">SVN服务器实现链接更新web目录</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>依然灬灰</a>
 </header>
@@ -91,104 +80,55 @@
         <div class="site-intro">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            SVN服务器实现链接更新web目录
-            <!-- 404 -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-        </p>
-        <!-- 404 -->
-        
         <!-- 文章页meta -->
-        
-            <!-- 文章页标签  -->
-            
-                <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = SVN>SVN</a>
-    
-</div>
-            
-            <div class="post-intro-meta">
-                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/02/01</span>
-            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>使用版本控制SVN用钩子实现了刷新web目录的操作,但是却发现不足,只能刷新项目的根目录,这时候如果想刷新某一制定目录就很尴尬啦,所有考虑使用链接刷新目录。<br>最开始的想法是使用PHP调用shell脚本，更新需要的目录。</p>
-<h1 id="PHP部分"><a href="#PHP部分" class="headerlink" title="PHP部分"></a>PHP部分</h1><h2 id="在web目录下创建一个php文件"><a href="#在web目录下创建一个php文件" class="headerlink" title="在web目录下创建一个php文件"></a>在web目录下创建一个php文件</h2><h3 id="PHP代码"><a href="#PHP代码" class="headerlink" title="PHP代码"></a>PHP代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">error_reporting(<span class="number">7</span>);<span class="comment">//设置报错等级</span></div><div class="line">error_reporting(E_ALL|E_STRICT);<span class="comment">//设置报错等级</span></div><div class="line">ini_set(<span class="string">'display_errors'</span>, <span class="string">'on'</span>);<span class="comment">//显示报错</span></div><div class="line">passthru(<span class="string">"/usr/bin/sudo /root/svnupdate.sh 2&gt;&amp;1"</span>,$returnvalue);<span class="comment">//php调用shell</span></div><div class="line">var_dump($returnvalue);<span class="comment">//打印返回信息</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h1 id="shell部分"><a href="#shell部分" class="headerlink" title="shell部分"></a>shell部分</h1><h2 id="在-root目录下创建一个sh文件"><a href="#在-root目录下创建一个sh文件" class="headerlink" title="在/root目录下创建一个sh文件"></a>在/root目录下创建一个sh文件</h2><h3 id="shell代码"><a href="#shell代码" class="headerlink" title="shell代码"></a>shell代码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">/usr/bin/svn up /data/www/html/(需要更新的目录) --username svnupdater(svn更新的用户名) --password svnupdater(svn更新的密码) --no-auth-cache 2&gt;&amp;1</div></pre></td></tr></table></figure>
-<h3 id="本地执行sh文件"><a href="#本地执行sh文件" class="headerlink" title="本地执行sh文件"></a>本地执行sh文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]<span class="comment"># sh svnupdate.sh</span></div></pre></td></tr></table></figure>
-<p>出现以下信息说明shell可以使用<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]<span class="comment"># sh svnupdate.sh</span></div><div class="line">Updating <span class="string">'/data/www/html/'</span>:</div><div class="line">At revision 1.</div></pre></td></tr></table></figure></p>
-<h3 id="使用浏览器访问php文件"><a href="#使用浏览器访问php文件" class="headerlink" title="使用浏览器访问php文件"></a>使用浏览器访问php文件</h3><p>错误提示sudo: no tty present and no askpass program specified Sorry, try again.<br>这时会发现sudo需要输入密码<br>这时我们需要修改sudo的配置文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]<span class="comment"># vim /etc/sudoers</span></div></pre></td></tr></table></figure>
-<p>在文件添加<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##测试</span></div><div class="line">nginx ALL=(ALL) NOPASSWD: /root/svnupdate.sh   //nginx用户不需要密码既可以执行/root/svnupdate.sh</div><div class="line">apache ALL=(ALL) NOPASSWD: /root/svnupdate.sh  //apache用户不需要密码既可以执行/root/svnupdate.sh</div><div class="line">具体使用web访问使用的什么用户就需要根据你安装web时的配置啦</div></pre></td></tr></table></figure></p>
-<p>重启nginx或apache，让用户重新获得权限。<br>再使用链接访问就可以更新的啦。</p>
-<p>本文参考<br><a href="http://www.bubuko.com/infodetail-81047.html" target="_blank" rel="external">错误提示sudo: no tty present and no askpass program specified Sorry, try again.</a></p>
-
-    </article>
-    <!-- 前后页  -->
-    <ul class="post-pager">
-        
-            <li class="next">
-                <a href= "/2018/04/08/hexo的搭建和使用/" title= hexo的搭建和使用 >
-                    <span>Next Post</span>
-                    <span>hexo的搭建和使用</span>
-                </a>
-            </li>
-        
-        
-            <li class="previous">
-                <a href= "/2018/01/29/win查看电池状态/" title= Win查看电池 >
-                    <span>Previous Post</span>
-                    <span>Win查看电池</span>
-                </a>
-            </li>
-        
-    </ul>
-
-
-    <!-- 来必力City版安装代码 -->
-
-    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTI0Ni83Nzk1>
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
-                if (typeof LivereTower === 'function') { return; }
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
-
-<!-- City版安装代码已完成 -->
+            <main class="main index-page">
     
     
-    <!--PC版-->
-
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2018/04/08/hexo的搭建和使用/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>hexo的搭建和使用</span>
+                    </h2>
+                <div class="abstract-content">
+                    上一篇写到的SVN服务器实现链接更新web目录，其实本文应该说是它的1.0版本，我是从这里来的灵感才搞的那个小东西使用版本控制SVN用钩子实现了刷新web目录的操作,但是却发现不足,只能刷新项目的根目录,这时候如果想刷新某一制定目录就很尴尬啦,所有考虑使用链接刷新目录。最开始的想法是使用PHP...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = hexo>hexo</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/08</span>
+                </div>
+            </div>
+        </article>
+    
+    <!-- paginator  -->
     
 </main>
             <!-- profile -->
