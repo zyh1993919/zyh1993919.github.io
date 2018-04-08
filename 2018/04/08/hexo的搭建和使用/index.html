@@ -151,20 +151,29 @@ conf  db  format  hooks  locks  post_log.log  README.txt
 <span class="comment">#设定环境变量，如果没有设定可能会出现update报错</span>
 <span class="comment">#设定语言，根据系统语言设置，如果是GBK就设置为 LANG=zh_CN.GBK</span>
 <span class="built_in">export</span> LANG=en_US.utf8
-SVN_PATH=/usr/bin/svn   
-<span class="comment">#GITBOOK_PATH=/usr/local/node/6.11.3/bin/gitbook</span>
+<span class="comment">#SVN的路径</span>
+SVN_PATH=/usr/bin/svn
+<span class="comment">#Hexo的路径 </span>
+HEXO_PATH=/usr/<span class="built_in">local</span>/node/6.11.3/bin/hexo
+<span class="comment">#外网能访问的地址即需要更新的地址</span>
 WEB_PATH=/data/www/html/hexo
-<span class="variable">$SVN_PATH</span> update <span class="variable">$WEB_PATH</span> --username <span class="string">'svnupdater'</span> --password <span class="string">'zyhsvnupdate'</span> --n
-o-auth-cache
+<span class="comment">#log文件的路径</span>
+LOG_PATH=/data/svn/hexo/post_log.log
+<span class="comment">#先把版本库的代码同步到WWW目录下</span>
+<span class="variable">$SVN_PATH</span> update <span class="variable">$WEB_PATH</span> --username <span class="string">'svnupdater'</span> --password <span class="string">'zyhsvnupdate'</span> --no-auth-cache
 
+<span class="comment">#打开更新的目录</span>
 <span class="built_in">cd</span> /data/www/html/hexo/
-date <span class="string">"+%Y-%m-%d %H:%M:%S"</span> &gt;&gt; /data/svn/hexo/post_log.log
-/usr/<span class="built_in">local</span>/node/6.11.3/bin/hexo clean /data/www/html/hexo &gt;&gt; /data/svn/hexo/post
-_log.log
-/usr/<span class="built_in">local</span>/node/6.11.3/bin/hexo generate /data/www/html/hexo &gt;&gt; /data/svn/hexo/p
-ost_log.log
-/usr/<span class="built_in">local</span>/node/6.11.3/bin/hexo deploy /data/www/html/hexo &gt;&gt; /data/svn/hexo/pos
-t_log.log
+<span class="comment">#打印当前时间信息到log文件中</span>
+date <span class="string">"+%Y-%m-%d %H:%M:%S"</span> &gt;&gt; LOG_PATH
+<span class="comment">#</span>
+HEXO_PATH clean WEB_PATH &gt;&gt; LOG_PATH
+HEXO_PATH generate WEB_PATH &gt;&gt; LOG_PATH
+HEXO_PATH deploy WEB_PATH &gt;&gt; LOG_PATH
+</code></pre>
+<p>SVN更新的账号密码测试的时候可以使用你自己的账号，以后再升级成专用更新的用户账号密码</p>
+<p>文件修改好后使用<br>给权限</p>
+<pre><code class="sh">chmod 700 ./hooks/post-commit
 </code></pre>
 
     </article>
