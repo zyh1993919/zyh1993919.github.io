@@ -152,7 +152,20 @@
 <h1 id="unset"><a href="#unset" class="headerlink" title="unset"></a>unset</h1><p>将变量销毁, 释放内存</p>
 <p>#empty()<br>检查一个变量是否为空如果为空,返回true, 否则返回false<br>PHP认为以下是空的:</p>
 <p><font color="#FF0000">“”、0、”0”、NULL、FALSE、array()及没有赋值的变量和被unset掉之后的变量</font>都被认为是空的</p>
-<h2 id="PHP超全局变量"><a href="#PHP超全局变量" class="headerlink" title="PHP超全局变量"></a>PHP超全局变量</h2><p>1.$_POST //用来接收表单的method=post 方法时的传值<br>2.$_GET //用来接收表单的method=get 方法时的传值,或者接收通过地址栏(?)问号传值<br>表单    method=’get’<br>链接    ‘<a href="’list.php?id=111’">新闻列表1</a>‘<br>JS跳转    形式1: ‘<a href="#" onclick="location.href='content.php?id=99'">新闻内容</a><br>‘<br>形式2: ‘<a href="#" onclick="if(confirm('真的要删除吗?')) location.href='content.php?id=100'">删除1</a><br>‘<br>形式3: ‘a href=”content.php?id=100” onclick=”return confirm(‘真的要删除吗?’)”&gt;删除2<br>‘<br>header函数跳转    header(‘location:list.php?id=1112’)<br>3.$_SERVER //获取服务器的相关设置<br>4.$_SESSION //会话控制: 将数据存储在服务器端的会话技术<br>5.$_COOKIE //会话控制: 将数据存储在客户端的会话技术<br>6.$_FILES // 获取上传文件的相关信息<br>7.$GLOBALS //获取所有全局变量的相关信息</p>
+<h2 id="PHP超全局变量"><a href="#PHP超全局变量" class="headerlink" title="PHP超全局变量"></a>PHP超全局变量</h2><p>1.$_POST //用来接收表单的method=post 方法时的传值<br>2.$_GET //用来接收表单的method=get 方法时的传值,或者接收通过地址栏(?)问号传值<br>表单    method=’get’<br>链接<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">’list.php?id</span>=<span class="string">111’</span>&gt;</span>新闻列表1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>JS跳转<br>形式1: </p>
+<pre><code class="js">&lt;a href=<span class="string">"#"</span> onclick=<span class="string">"location.href='content.php?id=99'"</span>&gt;新闻内容&lt;<span class="regexp">/a&gt;&lt;br&gt;</span>
+</code></pre>
+<p>形式2:</p>
+<pre><code class="js">&lt;a href=<span class="string">"#"</span> onclick=<span class="string">"if(confirm('真的要删除吗?')) location.href='content.php?id=100'"</span>&gt;删除<span class="number">1</span>&lt;<span class="regexp">/a&gt;&lt;br&gt;</span>
+</code></pre>
+<p>形式3: </p>
+<pre><code class="js">&lt;a href=<span class="string">"content.php?id=100"</span> onclick=<span class="string">"return confirm('真的要删除吗?')"</span>&gt;删除<span class="number">2</span>&lt;<span class="regexp">/a&gt;&lt;br&gt;</span>
+</code></pre>
+<p>header函数跳转</p>
+<pre><code class="php">header(‘location:<span class="keyword">list</span>.php?id=<span class="number">1112</span>’)
+</code></pre>
+<p>3.$_SERVER //获取服务器的相关设置<br>4.$_SESSION //会话控制: 将数据存储在服务器端的会话技术<br>5.$_COOKIE //会话控制: 将数据存储在客户端的会话技术<br>6.$_FILES // 获取上传文件的相关信息<br>7.$GLOBALS //获取所有全局变量的相关信息</p>
 
     </article>
     <!-- 前后页  -->
