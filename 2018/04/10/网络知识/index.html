@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        安装完CentOS 7 安全配置 · 依然灬灰
+        网络基本知识 · 依然灬灰
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >依然灬灰</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">安装完CentOS 7 安全配置</a>
+                <a href="#" class="post-name">网络基本知识</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            安装完CentOS 7 安全配置
+            网络基本知识
             <!-- 404 -->
             
         </h1>
@@ -120,13 +120,13 @@
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = CentOS7>CentOS7</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = 网络>网络</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/07</span>
+                <span class="post-intro-time">2018/04/10</span>
             </div>
         
     </div>
@@ -134,7 +134,9 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="云服务器安装CentOS7-3后常用配置"><a href="#云服务器安装CentOS7-3后常用配置" class="headerlink" title="云服务器安装CentOS7.3后常用配置"></a>云服务器安装CentOS7.3后常用配置</h1><h3 id="查看CentOS版本"><a href="#查看CentOS版本" class="headerlink" title="查看CentOS版本"></a>查看CentOS版本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/centos-release</div></pre></td></tr></table></figure>
+        <h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>概念:网络地址是指互联网协议地址（英语:Internet Protocol Address，又译为网际协议地址），是IP Address的缩写。IP地址是IP协议提供的一种统一的地址格式，他为互联网上的每一台主机分配一个地址（唯一性）。</p>
+<p>查看本机IP地址，特殊的IP地址，MAC地址</p>
+<p>使用网络连接属性<br>或者<br>win+r 输入 cmd 输入ipconfig</p>
 <h2 id="安装完CentOS-7-后必做的七件事"><a href="#安装完CentOS-7-后必做的七件事" class="headerlink" title="安装完CentOS 7 后必做的七件事"></a><a href="http://www.centoscn.com/CentosSecurity/CentosSafe/2015/0126/4558.html" target="_blank" rel="external">安装完CentOS 7 后必做的七件事</a></h2><h3 id="更改-root-密码"><a href="#更改-root-密码" class="headerlink" title="更改 root 密码"></a>更改 root 密码</h3><p>登录云服务器,如果不是以root用户登录的，请先切换到root用户下，<br>执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">su root			<span class="comment">##然后按提示输入root用户的密码</span></div><div class="line">passwd			<span class="comment">##接着输入新的密码</span></div></pre></td></tr></table></figure></p>
 <h3 id="新增一个普通帐号"><a href="#新增一个普通帐号" class="headerlink" title="新增一个普通帐号"></a>新增一个普通帐号</h3><pre><code class="bash">adduser commuser
 passwd commuser
@@ -168,18 +170,11 @@ firewall-cmd --list-all            <span class="comment">##查看所有放行信
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
-                <a href= "/2017/10/07/安装完CentOS7安全配置/" title= 安装完CentOS 7 安全配置 >
-                    <span>Next Post</span>
-                    <span>安装完CentOS 7 安全配置</span>
-                </a>
-            </li>
-        
         
             <li class="previous">
-                <a href= "/2017/10/01/U盘启动/" title= 制作U盘启动 >
+                <a href= "/2018/04/08/hexo的搭建和使用/" title= Hexo的搭建和使用 >
                     <span>Previous Post</span>
-                    <span>制作U盘启动</span>
+                    <span>Hexo的搭建和使用</span>
                 </a>
             </li>
         
@@ -385,14 +380,6 @@ firewall-cmd --list-all            <span class="comment">##查看所有放行信
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-archive"> Total : 11 </div>
     
     <div class="post-archive">
@@ -402,6 +389,11 @@ firewall-cmd --list-all            <span class="comment">##查看所有放行信
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2018/04/10/网络知识/" >网络基本知识</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -454,11 +446,6 @@ firewall-cmd --list-all            <span class="comment">##查看所有放行信
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/安装完CentOS7安全配置 - 副本/" >安装完CentOS 7 安全配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">10/01</span><a class="archive-post-title" href= "/2017/10/01/U盘启动/" >制作U盘启动</a>
         </li>
     
@@ -483,6 +470,8 @@ firewall-cmd --list-all            <span class="comment">##查看所有放行信
         <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Win</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">网络</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
