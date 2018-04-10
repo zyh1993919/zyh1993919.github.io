@@ -135,36 +135,9 @@
             <main class="main post-page">
     <article class="article-entry">
         <h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>概念:网络地址是指互联网协议地址（英语:Internet Protocol Address，又译为网际协议地址），是IP Address的缩写。IP地址是IP协议提供的一种统一的地址格式，他为互联网上的每一台主机分配一个地址（唯一性）。</p>
-<p>查看本机IP地址，特殊的IP地址，MAC地址</p>
-<p>使用网络连接属性<br>或者<br>win+r 输入 cmd 输入ipconfig</p>
-<h2 id="安装完CentOS-7-后必做的七件事"><a href="#安装完CentOS-7-后必做的七件事" class="headerlink" title="安装完CentOS 7 后必做的七件事"></a><a href="http://www.centoscn.com/CentosSecurity/CentosSafe/2015/0126/4558.html" target="_blank" rel="external">安装完CentOS 7 后必做的七件事</a></h2><h3 id="更改-root-密码"><a href="#更改-root-密码" class="headerlink" title="更改 root 密码"></a>更改 root 密码</h3><p>登录云服务器,如果不是以root用户登录的，请先切换到root用户下，<br>执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">su root			<span class="comment">##然后按提示输入root用户的密码</span></div><div class="line">passwd			<span class="comment">##接着输入新的密码</span></div></pre></td></tr></table></figure></p>
-<h3 id="新增一个普通帐号"><a href="#新增一个普通帐号" class="headerlink" title="新增一个普通帐号"></a>新增一个普通帐号</h3><pre><code class="bash">adduser commuser
-passwd commuser
-</code></pre>
-<h3 id="禁止-root-用户使用-ssh-登入"><a href="#禁止-root-用户使用-ssh-登入" class="headerlink" title="禁止 root 用户使用 ssh 登入"></a>禁止 root 用户使用 ssh 登入</h3><pre><code class="bash">vim /etc/ssh/sshd_config
-</code></pre>
-<p>在#PermitRootLogin yes的下面<br>添加PermitRootLogin no  </p>
-<p>重启sshd服务</p>
-<pre><code class="bash">systemctl restart sshd.service
-</code></pre>
-<h3 id="使用非常规的-ssh-端口"><a href="#使用非常规的-ssh-端口" class="headerlink" title="使用非常规的 ssh 端口"></a>使用非常规的 ssh 端口</h3><pre><code class="bash">vim /etc/ssh/sshd_config
-</code></pre>
-<p>在#Port 22的下面<br>添加Port XXX<br>你可以把 XXX 改为任何 1024 – 65535 之间的任何数字，若害怕与某些系统服务发生冲突，可以写10837这里。(这部分是源自上面的连接)<br>我建议端口号可以使用小于1024的端口号,这样在别人扫描端口的时候,其实扫出来的服务和你现在使用的服务不一样也能加强安全。  </p>
-<p>重启sshd服务</p>
-<pre><code class="bash">systemctl restart sshd.service
-</code></pre>
-<h3 id="启用公钥验证登入-ssh"><a href="#启用公钥验证登入-ssh" class="headerlink" title="启用公钥验证登入 ssh"></a>启用公钥验证登入 ssh</h3><p>(未实验,带实验后添加)</p>
-<h3 id="启用防火墙"><a href="#启用防火墙" class="headerlink" title="启用防火墙"></a>启用防火墙</h3><pre><code class="bash">firewall-cmd --state            <span class="comment">##查看防火墙状态，是否是running</span>
-systemctl <span class="built_in">enable</span> firewalld      <span class="comment">##设置开启启动防火墙</span>
-systemctl start firewalld       <span class="comment">##启动防火墙</span>
-systemctl restart firewalld     <span class="comment">##重启防火墙</span>
-systemctl stop firewalld        <span class="comment">##停止防火墙</span>
-firewall-cmd --reload           <span class="comment">##重新载入配置，比如添加规则之后，需要执行此命令</span>
-firewall-cmd --zone=public --add-port=80/tcp --permanent        <span class="comment">##添加80端口到放行列表</span>
-firewall-cmd --zone=public --query-port=80/tcp                    <span class="comment">##查看80端口是否放行</span>
-firewall-cmd --zone= public --remove-port=80/tcp --permanent    <span class="comment">##删除80端口从放行列表</span>
-firewall-cmd --list-all            <span class="comment">##查看所有放行信息</span>
-</code></pre>
+<h1 id="查看本机IP地址"><a href="#查看本机IP地址" class="headerlink" title="查看本机IP地址"></a>查看本机IP地址</h1><p>使用 网络连接 属性<br>或者<br>win+r 输入 cmd 输入ipconfig</p>
+<h1 id="特殊的IP地址"><a href="#特殊的IP地址" class="headerlink" title="特殊的IP地址"></a>特殊的IP地址</h1><p>127.0.0.1是指本机的IP地址，表明我就是我。<br>192.168.31.61，对外的IP地址，别人可以访问我。</p>
+<h1 id="MAC地址（（本机网卡）物理地址）"><a href="#MAC地址（（本机网卡）物理地址）" class="headerlink" title="MAC地址（（本机网卡）物理地址）"></a>MAC地址（（本机网卡）物理地址）</h1><p>举例：小汽车，IP地址是汽车车牌，MAC地址发动机编号</p>
 
     </article>
     <!-- 前后页  -->
