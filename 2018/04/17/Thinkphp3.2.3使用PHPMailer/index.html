@@ -136,18 +136,92 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Thinkphp3.2.3使用PHPMailer</p>
-<h1 id="下载PHPMailer"><a href="#下载PHPMailer" class="headerlink" title="下载PHPMailer"></a>下载PHPMailer</h1><p><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank" rel="external">github上PHPMailer下载地址</a></p>
-<p>## </p>
-<h3 id="PHP代码"><a href="#PHP代码" class="headerlink" title="PHP代码"></a>PHP代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">error_reporting(<span class="number">7</span>);<span class="comment">//设置报错等级</span></div><div class="line">error_reporting(E_ALL|E_STRICT);<span class="comment">//设置报错等级</span></div><div class="line">ini_set(<span class="string">'display_errors'</span>, <span class="string">'on'</span>);<span class="comment">//显示报错</span></div><div class="line">passthru(<span class="string">"/usr/bin/sudo /root/svnupdate.sh 2&gt;&amp;1"</span>,$returnvalue);<span class="comment">//php调用shell</span></div><div class="line">var_dump($returnvalue);<span class="comment">//打印返回信息</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h1 id="shell部分"><a href="#shell部分" class="headerlink" title="shell部分"></a>shell部分</h1><h2 id="在-root目录下创建一个sh文件"><a href="#在-root目录下创建一个sh文件" class="headerlink" title="在/root目录下创建一个sh文件"></a>在/root目录下创建一个sh文件</h2><h3 id="shell代码"><a href="#shell代码" class="headerlink" title="shell代码"></a>shell代码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">/usr/bin/svn up /data/www/html/(需要更新的目录) --username svnupdater(svn更新的用户名) --password svnupdater(svn更新的密码) --no-auth-cache 2&gt;&amp;1</div></pre></td></tr></table></figure>
-<h3 id="本地执行sh文件"><a href="#本地执行sh文件" class="headerlink" title="本地执行sh文件"></a>本地执行sh文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]<span class="comment"># sh svnupdate.sh</span></div></pre></td></tr></table></figure>
-<p>出现以下信息说明shell可以使用<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]<span class="comment"># sh svnupdate.sh</span></div><div class="line">Updating <span class="string">'/data/www/html/'</span>:</div><div class="line">At revision 1.</div></pre></td></tr></table></figure></p>
-<h3 id="使用浏览器访问php文件"><a href="#使用浏览器访问php文件" class="headerlink" title="使用浏览器访问php文件"></a>使用浏览器访问php文件</h3><p>错误提示sudo: no tty present and no askpass program specified Sorry, try again.<br>这时会发现sudo需要输入密码<br>这时我们需要修改sudo的配置文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@iZ2ze1jtxhkve7f07qko6nZ sshuser]<span class="comment"># vim /etc/sudoers</span></div></pre></td></tr></table></figure>
-<p>在文件添加<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##测试</span></div><div class="line">nginx ALL=(ALL) NOPASSWD: /root/svnupdate.sh   //nginx用户不需要密码既可以执行/root/svnupdate.sh</div><div class="line">apache ALL=(ALL) NOPASSWD: /root/svnupdate.sh  //apache用户不需要密码既可以执行/root/svnupdate.sh</div><div class="line">具体使用web访问使用的什么用户就需要根据你安装web时的配置啦</div></pre></td></tr></table></figure></p>
-<p>重启nginx或apache，让用户重新获得权限。<br>再使用链接访问就可以更新的啦。</p>
-<p>本文参考<br><a href="http://www.bubuko.com/infodetail-81047.html" target="_blank" rel="external">错误提示sudo: no tty present and no askpass program specified Sorry, try again.</a></p>
+        <h1 id="PHP配置"><a href="#PHP配置" class="headerlink" title="PHP配置"></a>PHP配置</h1><p>使用 phpinfo() 函数查看 socket 和 openssl 扩展信息(我使用phpstudy,只需要在控制面板里php扩展打开配置项)。<br>LINUX下的开启方法略有不同，以后补充。</p>
+<h1 id="下载PHPMailer"><a href="#下载PHPMailer" class="headerlink" title="下载PHPMailer"></a>下载PHPMailer</h1><p><a href="https://github.com/PHPMailer/PHPMailer/" target="_blank" rel="external">github上PHPMailer下载地址</a><br>在’项目地址\ThinkPHP\Library\Org\’地址下新建PHPMailer文件夹<br>解压文件，将src文件中的PHPMailer.php和SMTP.php拷贝到新建目录中<br>将PHPMailer.php修改为PHPMailer.class.php<br>将SMTP.php修改为SMTP.class.php</p>
+<h2 id="修改PHPMailer-class-php代码"><a href="#修改PHPMailer-class-php代码" class="headerlink" title="修改PHPMailer.class.php代码"></a>修改PHPMailer.class.php代码</h2><h3 id="PHP代码"><a href="#PHP代码" class="headerlink" title="PHP代码"></a>PHP代码</h3><pre><code class="php"><span class="comment">//将</span>
+<span class="keyword">namespace</span> <span class="title">PHPMailer</span>\<span class="title">PHPMailer</span>;
+<span class="comment">//修改为</span>
+<span class="keyword">namespace</span> <span class="title">Org</span>\<span class="title">PHPMailer</span>;
+</code></pre>
+<h2 id="修改SMTP-class-php代码"><a href="#修改SMTP-class-php代码" class="headerlink" title="修改SMTP.class.php代码"></a>修改SMTP.class.php代码</h2><h3 id="PHP代码-1"><a href="#PHP代码-1" class="headerlink" title="PHP代码"></a>PHP代码</h3><pre><code class="php"><span class="comment">//将</span>
+<span class="keyword">namespace</span> <span class="title">PHPMailer</span>\<span class="title">PHPMailer</span>;
+<span class="comment">//修改为</span>
+<span class="keyword">namespace</span> <span class="title">Org</span>\<span class="title">PHPMailer</span>;
+</code></pre>
+<h2 id="function-php"><a href="#function-php" class="headerlink" title="function.php"></a>function.php</h2><p>在’项目地址\Application\Common\Common\function.php’新增以下代码</p>
+<pre><code class="php"><span class="comment">/**</span>
+<span class="comment"> * 发送邮件</span>
+<span class="comment"> * <span class="doctag">@param</span>  string $address 需要发送的邮箱地址 发送给多个地址需要写成数组形式</span>
+<span class="comment"> * <span class="doctag">@param</span>  string $subject 标题</span>
+<span class="comment"> * <span class="doctag">@param</span>  string $content 内容</span>
+<span class="comment"> * <span class="doctag">@return</span> boolean       是否成功</span>
+<span class="comment"> */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">send_email</span><span class="params">($address,$subject,$content)</span></span>
+<span class="function"></span>{
+    $email_smtp=C(<span class="string">'EMAIL_SMTP'</span>);
+    $email_username=C(<span class="string">'EMAIL_USERNAME'</span>);
+    $email_password=C(<span class="string">'EMAIL_PASSWORD'</span>);
+    $email_from_name=C(<span class="string">'EMAIL_FROM_NAME'</span>);
+    $email_smtp_secure=C(<span class="string">'EMAIL_SMTP_SECURE'</span>);
+    $email_port=C(<span class="string">'EMAIL_PORT'</span>);
+    <span class="keyword">if</span>(<span class="keyword">empty</span>($email_smtp) || <span class="keyword">empty</span>($email_username) || <span class="keyword">empty</span>($email_password) || <span class="keyword">empty</span>($email_from_name)){
+        <span class="keyword">return</span> <span class="keyword">array</span>(<span class="string">"error"</span>=&gt;<span class="number">1</span>,<span class="string">"message"</span>=&gt;<span class="string">'邮箱配置不完整'</span>);
+    }
+    $phpmailer = <span class="keyword">new</span> \Org\PHPMailer\PHPMailer();
+    <span class="comment">// 设置PHPMailer使用SMTP服务器发送Email</span>
+    $phpmailer-&gt;IsSMTP();
+    <span class="comment">// 设置设置smtp_secure</span>
+    $phpmailer-&gt;SMTPSecure=$email_smtp_secure;
+    <span class="comment">// 设置port</span>
+    $phpmailer-&gt;Port=$email_port;
+    <span class="comment">// 设置为html格式</span>
+    $phpmailer-&gt;IsHTML(<span class="keyword">true</span>);
+    <span class="comment">// 设置邮件的字符编码'</span>
+    $phpmailer-&gt;CharSet=<span class="string">'UTF-8'</span>;
+    <span class="comment">// 设置SMTP服务器。</span>
+    $phpmailer-&gt;Host=$email_smtp;
+    <span class="comment">// 设置为"需要验证"</span>
+    $phpmailer-&gt;SMTPAuth=<span class="keyword">true</span>;
+    <span class="comment">// 设置用户名</span>
+    $phpmailer-&gt;Username=$email_username;
+    <span class="comment">// 设置密码</span>
+    $phpmailer-&gt;Password=$email_password;
+    <span class="comment">// 设置邮件头的From字段。</span>
+    $phpmailer-&gt;From=$email_username;
+    <span class="comment">// 设置发件人名字</span>
+    $phpmailer-&gt;FromName=$email_from_name;
+    <span class="comment">// 添加收件人地址，可以多次使用来添加多个收件人</span>
+    <span class="keyword">if</span>(is_array($address)){
+        <span class="keyword">foreach</span>($address <span class="keyword">as</span> $addressv){
+            $phpmailer-&gt;AddAddress($addressv);
+        }
+    }<span class="keyword">else</span>{
+        $phpmailer-&gt;AddAddress($address);
+    }
+    <span class="comment">// 设置邮件标题</span>
+    $phpmailer-&gt;Subject=$subject;
+    <span class="comment">// 设置邮件正文</span>
+    $phpmailer-&gt;Body=$content;
+    <span class="comment">// 发送邮件。</span>
+    <span class="keyword">if</span>(!$phpmailer-&gt;Send()) {
+        $phpmailererror=$phpmailer-&gt;ErrorInfo;
+        <span class="keyword">return</span> <span class="keyword">array</span>(<span class="string">"error"</span>=&gt;<span class="number">1</span>,<span class="string">"message"</span>=&gt;$phpmailererror);
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="keyword">array</span>(<span class="string">"error"</span>=&gt;<span class="number">0</span>);
+    }
+}
+</code></pre>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在’项目/Application/Common/Conf/config.php’添加配置</p>
+<pre><code class="php"><span class="comment">/*</span>
+<span class="comment"> * PHPMailer配置型</span>
+<span class="comment"> * */</span>
+<span class="string">'EMAIL_FROM_NAME'</span>        =&gt; <span class="string">''</span>,   <span class="comment">// 发件人(随便写)</span>
+<span class="string">'EMAIL_SMTP'</span>             =&gt; <span class="string">''</span>,   <span class="comment">// smtp例如smtp.163.com或者smtp.qq.com</span>
+<span class="string">'EMAIL_USERNAME'</span>         =&gt; <span class="string">''</span>,   <span class="comment">// 账号例如aaa.163.com或者11111.qq.com</span>
+<span class="string">'EMAIL_PASSWORD'</span>         =&gt; <span class="string">''</span>,   <span class="comment">// 密码  注意: 163和QQ邮箱是授权码；不是登录的密码</span>
+<span class="string">'EMAIL_SMTP_SECURE'</span>      =&gt; <span class="string">''</span>,   <span class="comment">// 链接方式 如果使用QQ邮箱；需要把此项改为  ssl</span>
+<span class="string">'EMAIL_PORT'</span>             =&gt; <span class="string">'25'</span>, <span class="comment">// 端口 如果使用QQ邮箱；需要把此项改为  465(阿里云默认封掉25端口)建议使用465配合上面ssl</span>
+</code></pre>
 
     </article>
     <!-- 前后页  -->
